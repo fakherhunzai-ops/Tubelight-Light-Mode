@@ -52,46 +52,46 @@ export default function SocialProof() {
         </div>
 
         {/* Logo Marquee */}
-        <div className="mb-12 md:mb-20 overflow-hidden rounded-2xl py-6 md:py-10" style={{backgroundColor: 'rgba(15,72,220,0.04)'}}>
-          <div className="flex gap-8 md:gap-12 animate-scroll">
+        <div className="mb-12 md:mb-20 overflow-hidden rounded-xl sm:rounded-2xl py-6 sm:py-8 md:py-10" style={{backgroundColor: 'rgba(15,72,220,0.04)'}}>
+          <div className="flex gap-6 sm:gap-8 md:gap-12 animate-scroll">
             {[...logos, ...logos].map((logo, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 flex items-center gap-2 md:gap-3 px-6 md:px-8 py-2 md:py-3 text-gray-400 hover:text-gray-600 transition-colors whitespace-nowrap"
+                className="flex-shrink-0 flex items-center gap-2 sm:gap-2.5 md:gap-3 px-4 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3 text-gray-400 hover:text-gray-600 transition-colors whitespace-nowrap"
               >
-                <i className={`${logo.icon} text-xl md:text-2xl`}></i>
-                <span className="text-base md:text-xl font-bold">{logo.name}</span>
+                <i className={`${logo.icon} text-lg sm:text-xl md:text-2xl`}></i>
+                <span className="text-sm sm:text-base md:text-xl font-bold">{logo.name}</span>
               </div>
             ))}
           </div>
         </div>
 
         {/* Case Studies */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-7 md:gap-8">
           {caseStudies.map((study, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow"
+              className="bg-white rounded-lg sm:rounded-xl lg:rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow"
             >
               <div className="grid grid-cols-1 sm:grid-cols-3">
                 {/* Left - Logo */}
-                <div className="flex items-center justify-center p-8 sm:p-8" style={{backgroundColor: '#0F48DC'}}>
-                  <div className="text-5xl md:text-6xl font-bold text-white">{study.logo}</div>
+                <div className="flex items-center justify-center p-6 sm:p-7 md:p-8" style={{backgroundColor: '#0F48DC'}}>
+                  <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-white">{study.logo}</div>
                 </div>
 
                 {/* Right - Content */}
-                <div className="col-span-1 sm:col-span-2 p-6 md:p-8 space-y-5 md:space-y-6">
+                <div className="col-span-1 sm:col-span-2 p-5 sm:p-6 md:p-8 space-y-4 sm:space-y-5 md:space-y-6">
                   <div className="relative">
-                    <i className="ri-double-quotes-l text-3xl md:text-4xl text-gray-200 absolute -top-2 -left-2"></i>
-                    <p className="text-sm md:text-base text-gray-700 leading-relaxed relative z-10 pl-6">
+                    <i className="ri-double-quotes-l text-2xl sm:text-3xl md:text-4xl text-gray-200 absolute -top-2 -left-2"></i>
+                    <p className="text-xs sm:text-sm md:text-base text-gray-700 leading-relaxed relative z-10 pl-5 sm:pl-6">
                       {study.quote}
                     </p>
                   </div>
 
-                  <div className="flex flex-wrap items-center gap-4 md:gap-6 pt-3 md:pt-4">
+                  <div className="flex flex-wrap items-center gap-3 sm:gap-4 md:gap-6 pt-2 sm:pt-3 md:pt-4">
                     {study.metrics.map((metric, idx) => (
-                      <div key={idx} className="space-y-1">
-                        <div className="text-xl md:text-2xl font-bold" style={{color: '#0F48DC'}}>
+                      <div key={idx} className="space-y-0.5 sm:space-y-1">
+                        <div className="text-base sm:text-lg md:text-2xl font-bold" style={{color: '#0F48DC'}}>
                           {metric.value}
                         </div>
                         <div className="text-xs text-gray-600">{metric.label}</div>
@@ -99,9 +99,9 @@ export default function SocialProof() {
                     ))}
                   </div>
 
-                  <div className="pt-3 md:pt-4 border-t border-gray-100">
-                    <div className="text-sm font-semibold text-gray-900">{study.author}</div>
-                    <div className="text-sm text-gray-600">{study.role}</div>
+                  <div className="pt-2 sm:pt-3 md:pt-4 border-t border-gray-100">
+                    <div className="text-xs sm:text-sm font-semibold text-gray-900">{study.author}</div>
+                    <div className="text-xs sm:text-sm text-gray-600">{study.role}</div>
                   </div>
                 </div>
               </div>

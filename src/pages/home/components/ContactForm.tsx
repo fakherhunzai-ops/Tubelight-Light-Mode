@@ -171,28 +171,28 @@ export default function ContactForm() {
                 onSubmit={handleSubmit}
                 className="space-y-4 sm:space-y-5"
               >
-                <div className="grid sm:grid-cols-2 gap-4">
+                <div className="grid sm:grid-cols-2 gap-4 sm:gap-5">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1.5">First Name <span className="text-red-400">*</span></label>
+                    <label className="block text-sm sm:text-base font-medium text-gray-700 mb-2 sm:mb-2.5">First Name <span className="text-red-400">*</span></label>
                     <input
                       type="text"
                       name="first_name"
                       required
                       placeholder="John"
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 transition-all"
+                      className="w-full px-3.5 sm:px-4 py-3 sm:py-3.5 rounded-lg sm:rounded-xl border border-gray-200 text-base text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-opacity-50 transition-all min-h-[44px]"
                       style={{ ['--tw-ring-color' as string]: '#0F48DC40' }}
                       onFocus={e => (e.target.style.borderColor = '#0F48DC')}
                       onBlur={e => (e.target.style.borderColor = '')}
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1.5">Last Name <span className="text-red-400">*</span></label>
+                    <label className="block text-sm sm:text-base font-medium text-gray-700 mb-2 sm:mb-2.5">Last Name <span className="text-red-400">*</span></label>
                     <input
                       type="text"
                       name="last_name"
                       required
                       placeholder="Doe"
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm text-gray-800 placeholder-gray-400 focus:outline-none transition-all"
+                      className="w-full px-3.5 sm:px-4 py-3 sm:py-3.5 rounded-lg sm:rounded-xl border border-gray-200 text-base text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-opacity-50 transition-all min-h-[44px]"
                       onFocus={e => (e.target.style.borderColor = '#0F48DC')}
                       onBlur={e => (e.target.style.borderColor = '')}
                     />
@@ -200,37 +200,37 @@ export default function ContactForm() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">Work Email <span className="text-red-400">*</span></label>
+                  <label className="block text-sm sm:text-base font-medium text-gray-700 mb-2 sm:mb-2.5">Work Email <span className="text-red-400">*</span></label>
                   <input
                     type="email"
                     name="email"
                     required
                     placeholder="john@company.com"
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm text-gray-800 placeholder-gray-400 focus:outline-none transition-all"
+                    className="w-full px-3.5 sm:px-4 py-3 sm:py-3.5 rounded-lg sm:rounded-xl border border-gray-200 text-base text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-opacity-50 transition-all min-h-[44px]"
                     onFocus={e => (e.target.style.borderColor = '#0F48DC')}
                     onBlur={e => (e.target.style.borderColor = '')}
                   />
                 </div>
 
-                <div className="grid sm:grid-cols-2 gap-4">
+                <div className="grid sm:grid-cols-2 gap-4 sm:gap-5">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1.5">Company</label>
+                    <label className="block text-sm sm:text-base font-medium text-gray-700 mb-2 sm:mb-2.5">Company</label>
                     <input
                       type="text"
                       name="company"
                       placeholder="Acme Inc."
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm text-gray-800 placeholder-gray-400 focus:outline-none transition-all"
+                      className="w-full px-3.5 sm:px-4 py-3 sm:py-3.5 rounded-lg sm:rounded-xl border border-gray-200 text-base text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-opacity-50 transition-all min-h-[44px]"
                       onFocus={e => (e.target.style.borderColor = '#0F48DC')}
                       onBlur={e => (e.target.style.borderColor = '')}
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1.5">Phone</label>
+                    <label className="block text-sm sm:text-base font-medium text-gray-700 mb-2 sm:mb-2.5">Phone</label>
                     <input
                       type="tel"
                       name="phone"
                       placeholder="+91 98765 43210"
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm text-gray-800 placeholder-gray-400 focus:outline-none transition-all"
+                      className="w-full px-3.5 sm:px-4 py-3 sm:py-3.5 rounded-lg sm:rounded-xl border border-gray-200 text-base text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-opacity-50 transition-all min-h-[44px]"
                       onFocus={e => (e.target.style.borderColor = '#0F48DC')}
                       onBlur={e => (e.target.style.borderColor = '')}
                     />
@@ -238,12 +238,12 @@ export default function ContactForm() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Interested In</label>
-                  <div className="flex flex-wrap gap-2">
+                  <label className="block text-sm sm:text-base font-medium text-gray-700 mb-2.5 sm:mb-3">Interested In</label>
+                  <div className="flex flex-wrap gap-2 sm:gap-2.5">
                     {services.map(service => (
-                      <label key={service} className="flex items-center gap-1.5 cursor-pointer">
+                      <label key={service} className="flex items-center gap-2 cursor-pointer touch-target min-h-[44px]">
                         <input type="checkbox" name="services" value={service} className="hidden peer" />
-                        <span className="px-3 py-1.5 rounded-full text-xs font-medium border border-gray-200 text-gray-600 peer-checked:text-white transition-all cursor-pointer select-none"
+                        <span className="px-3 sm:px-3.5 py-2 sm:py-2.5 rounded-lg sm:rounded-full text-xs sm:text-sm font-medium border border-gray-200 text-gray-600 peer-checked:text-white transition-all cursor-pointer select-none"
                           style={{}}
                           onMouseEnter={e => (e.currentTarget.style.borderColor = '#0F48DC')}
                           onMouseLeave={e => (e.currentTarget.style.borderColor = '')}
@@ -256,7 +256,7 @@ export default function ContactForm() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                  <label className="block text-sm sm:text-base font-medium text-gray-700 mb-2 sm:mb-2.5">
                     Message <span className="text-red-400">*</span>
                     <span className={`ml-2 text-xs font-normal ${charCount > 480 ? 'text-red-400' : 'text-gray-400'}`}>
                       {charCount}/500
@@ -265,11 +265,11 @@ export default function ContactForm() {
                   <textarea
                     name="message"
                     required
-                    rows={4}
+                    rows={5}
                     maxLength={500}
                     placeholder="Tell us about your use case or ask us anything..."
                     onChange={e => setCharCount(e.target.value.length)}
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm text-gray-800 placeholder-gray-400 focus:outline-none transition-all resize-none"
+                    className="w-full px-3.5 sm:px-4 py-3 sm:py-3.5 rounded-lg sm:rounded-xl border border-gray-200 text-base text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-opacity-50 transition-all resize-none min-h-[120px]"
                     onFocus={e => (e.target.style.borderColor = '#0F48DC')}
                     onBlur={e => (e.target.style.borderColor = '')}
                   />
@@ -278,18 +278,18 @@ export default function ContactForm() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-3.5 rounded-xl text-white font-semibold text-sm flex items-center justify-center gap-2 hover:opacity-90 transition-opacity disabled:opacity-60 cursor-pointer whitespace-nowrap"
+                  className="w-full py-3.5 sm:py-4 rounded-lg sm:rounded-xl text-white font-semibold text-base sm:text-lg flex items-center justify-center gap-2 hover:opacity-90 transition-opacity disabled:opacity-60 cursor-pointer whitespace-nowrap min-h-[44px]"
                   style={{ backgroundColor: '#0F48DC' }}
                 >
                   {loading ? (
                     <>
-                      <i className="ri-loader-4-line animate-spin text-lg"></i>
+                      <i className="ri-loader-4-line animate-spin text-lg sm:text-xl"></i>
                       Sending...
                     </>
                   ) : (
                     <>
                       Send Message
-                      <i className="ri-send-plane-line text-lg"></i>
+                      <i className="ri-send-plane-line text-lg sm:text-xl"></i>
                     </>
                   )}
                 </button>

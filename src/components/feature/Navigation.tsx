@@ -421,9 +421,9 @@ const Navigation = () => {
             {/* Mobile Menu Button */}
             <button 
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 text-gray-700 hover:text-gray-900 cursor-pointer"
+              className="lg:hidden p-2 sm:p-3 text-gray-700 hover:text-gray-900 cursor-pointer min-h-[44px] min-w-[44px] flex items-center justify-center"
             >
-              <i className={`${mobileMenuOpen ? 'ri-close-line' : 'ri-menu-line'} text-2xl`}></i>
+              <i className={`${mobileMenuOpen ? 'ri-close-line' : 'ri-menu-line'} text-xl sm:text-2xl`}></i>
             </button>
           </div>
         </div>
@@ -447,16 +447,16 @@ const Navigation = () => {
             mobileMenuOpen ? 'translate-y-0' : '-translate-y-full'
           }`}
         >
-          <div className="p-6 space-y-4">
+          <div className="p-4 sm:p-6 space-y-3 sm:space-y-4">
             {/* Accordion Menu Items */}
             {(['products', 'solutions', 'developers', 'resources', 'company'] as const).map((item) => (
-              <div key={item} className="border-b border-gray-100 pb-4">
+              <div key={item} className="border-b border-gray-100 pb-3 sm:pb-4">
                 <button
                   onClick={() => toggleMobileAccordion(item)}
-                  className="w-full flex items-center justify-between py-3 text-left cursor-pointer"
+                  className="w-full flex items-center justify-between py-3 sm:py-4 text-left cursor-pointer min-h-[44px]"
                 >
-                  <span className="text-base font-semibold text-gray-900 capitalize">{item}</span>
-                  <i className={`ri-arrow-down-s-line text-lg transition-transform duration-200 ${mobileAccordion === item ? 'rotate-180' : ''}`}></i>
+                  <span className="text-base sm:text-lg font-semibold text-gray-900 capitalize">{item}</span>
+                  <i className={`ri-arrow-down-s-line text-lg sm:text-xl transition-transform duration-200 ${mobileAccordion === item ? 'rotate-180' : ''}`}></i>
                 </button>
 
                 {mobileAccordion === item && (
@@ -531,13 +531,13 @@ const Navigation = () => {
             </Link>
 
             {/* CTA Buttons in Mobile */}
-            <div className="pt-4 space-y-3 border-t border-gray-100">
+            <div className="pt-4 sm:pt-5 space-y-2.5 sm:space-y-3 border-t border-gray-100">
               <a
                 href="https://tubelightcommunications.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={closeMobileMenu}
-                className="block w-full px-6 py-3 text-center text-sm font-semibold text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors cursor-pointer"
+                className="block w-full px-6 py-3 sm:py-3.5 text-center text-sm sm:text-base font-semibold text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors cursor-pointer min-h-[44px] flex items-center justify-center"
               >
                 Sign In
               </a>
@@ -546,7 +546,7 @@ const Navigation = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={closeMobileMenu}
-                className="block w-full px-6 py-3 text-center text-white text-sm font-semibold rounded-lg hover:shadow-lg transition-all cursor-pointer"
+                className="block w-full px-6 py-3 sm:py-3.5 text-center text-white text-sm sm:text-base font-semibold rounded-lg hover:shadow-lg transition-all cursor-pointer min-h-[44px] flex items-center justify-center"
                 style={{ backgroundColor: '#0F48DC' }}
               >
                 Try for Free
