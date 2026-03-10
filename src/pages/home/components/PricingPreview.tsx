@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 
 export default function PricingPreview() {
@@ -62,21 +61,21 @@ export default function PricingPreview() {
   ];
 
   return (
-    <section className="py-32 bg-gradient-to-br from-gray-50 to-white">
-      <div className="max-w-[1440px] mx-auto px-8">
-        <div className="text-center mb-12 space-y-6">
-          <h2 className="font-['Plus_Jakarta_Sans'] text-5xl font-bold text-gray-900">
+    <section className="py-16 md:py-24 lg:py-32 bg-gradient-to-br from-gray-50 to-white">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8">
+        <div className="text-center mb-8 md:mb-12 space-y-4 md:space-y-6">
+          <h2 className="font-['Plus_Jakarta_Sans'] text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900">
             Simple, transparent pricing
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto font-['Inter']">
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto font-['Inter']">
             Pay only for what you use. No hidden fees, no setup costs. Scale up or down anytime.
           </p>
 
           {/* Billing Toggle */}
-          <div className="inline-flex items-center bg-gray-100 rounded-full p-1.5 gap-1">
+          <div className="inline-flex items-center bg-gray-100 rounded-full p-1 md:p-1.5 gap-1">
             <button
               onClick={() => setBillingType('payg')}
-              className={`px-6 py-2.5 rounded-full text-[15px] font-semibold transition-all whitespace-nowrap ${
+              className={`px-4 md:px-6 py-2 md:py-2.5 rounded-full text-sm md:text-[15px] font-semibold transition-all whitespace-nowrap ${
                 billingType === 'payg' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-600 hover:text-gray-900'
               }`}
             >
@@ -84,7 +83,7 @@ export default function PricingPreview() {
             </button>
             <button
               onClick={() => setBillingType('monthly')}
-              className={`px-6 py-2.5 rounded-full text-[15px] font-semibold transition-all whitespace-nowrap ${
+              className={`px-4 md:px-6 py-2 md:py-2.5 rounded-full text-sm md:text-[15px] font-semibold transition-all whitespace-nowrap ${
                 billingType === 'monthly' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-600 hover:text-gray-900'
               }`}
             >
@@ -94,42 +93,42 @@ export default function PricingPreview() {
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-8 md:mb-12">
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`relative bg-white rounded-2xl p-8 border-2 transition-all hover:shadow-xl hover:-translate-y-1 ${
+              className={`relative bg-white rounded-2xl p-6 md:p-8 border-2 transition-all hover:shadow-xl hover:-translate-y-1 ${
                 plan.highlighted ? 'border-transparent shadow-lg' : 'border-gray-100 shadow-sm'
               }`}
               style={plan.highlighted ? { outline: '2px solid #0F48DC', outlineOffset: '-2px' } : {}}
             >
               {plan.badge && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <div className="px-4 py-1.5 text-white text-sm font-semibold rounded-full shadow-lg whitespace-nowrap" style={{backgroundColor: '#0F48DC'}}>
+                <div className="absolute -top-3 md:-top-4 left-1/2 -translate-x-1/2">
+                  <div className="px-3 md:px-4 py-1 md:py-1.5 text-white text-xs md:text-sm font-semibold rounded-full shadow-lg whitespace-nowrap" style={{backgroundColor: '#0F48DC'}}>
                     {plan.badge}
                   </div>
                 </div>
               )}
 
-              <div className="space-y-6">
+              <div className="space-y-5 md:space-y-6">
                 <div className="space-y-2">
-                  <h3 className="font-['Plus_Jakarta_Sans'] text-2xl font-bold text-gray-900">{plan.name}</h3>
+                  <h3 className="font-['Plus_Jakarta_Sans'] text-xl md:text-2xl font-bold text-gray-900">{plan.name}</h3>
                   <p className="text-sm text-gray-600">{plan.description}</p>
                 </div>
 
-                <div className="py-4">
+                <div className="py-3 md:py-4">
                   <div className="flex items-baseline gap-2">
                     <span
-                      className="text-5xl font-bold"
+                      className="text-4xl md:text-5xl font-bold"
                       style={plan.highlighted ? { color: '#0F48DC' } : { color: '#111827' }}
                     >
                       {plan.price}
                     </span>
-                    <span className="text-base text-gray-600">{plan.unit}</span>
+                    <span className="text-sm md:text-base text-gray-600">{plan.unit}</span>
                   </div>
                 </div>
 
-                <div className="space-y-3 py-4">
+                <div className="space-y-2.5 md:space-y-3 py-3 md:py-4">
                   {plan.features.map((feature, idx) => (
                     <div key={idx} className="flex items-start gap-3">
                       <div
@@ -138,13 +137,13 @@ export default function PricingPreview() {
                       >
                         <i className={`ri-check-line text-sm ${plan.highlighted ? 'text-white' : 'text-gray-600'}`}></i>
                       </div>
-                      <span className="text-[15px] text-gray-700">{feature}</span>
+                      <span className="text-sm md:text-[15px] text-gray-700">{feature}</span>
                     </div>
                   ))}
                 </div>
 
                 <button
-                  className="w-full py-3.5 rounded-xl text-[15px] font-semibold transition-all whitespace-nowrap"
+                  className="w-full py-3 md:py-3.5 rounded-xl text-sm md:text-[15px] font-semibold transition-all whitespace-nowrap"
                   style={
                     plan.highlighted
                       ? { backgroundColor: '#0F48DC', color: '#fff' }
@@ -161,11 +160,11 @@ export default function PricingPreview() {
         <div className="text-center">
           <a
             href="#"
-            className="inline-flex items-center gap-2 text-[15px] font-semibold group"
+            className="inline-flex items-center gap-2 text-sm md:text-[15px] font-semibold group"
             style={{color: '#0F48DC'}}
           >
             Compare all features &amp; pricing
-            <i className="ri-arrow-right-line text-lg group-hover:translate-x-1 transition-transform"></i>
+            <i className="ri-arrow-right-line text-base md:text-lg group-hover:translate-x-1 transition-transform"></i>
           </a>
         </div>
       </div>

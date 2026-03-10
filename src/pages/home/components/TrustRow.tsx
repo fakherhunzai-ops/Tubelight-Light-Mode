@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react';
 
 interface Metric {
@@ -42,20 +41,20 @@ function AnimatedMetric({ metric, started }: { metric: Metric; started: boolean 
 
   return (
     <div className="text-center group hover:transform hover:scale-105 transition-all duration-300">
-      <div className="flex justify-center mb-4">
+      <div className="flex justify-center mb-3 sm:mb-4">
         <div
-          className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow"
+          className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow"
           style={{ backgroundColor: '#0F48DC' }}
         >
-          <i className={`${metric.icon} text-white text-2xl`}></i>
+          <i className={`${metric.icon} text-white text-lg sm:text-xl lg:text-2xl`}></i>
         </div>
       </div>
-      <div className="text-4xl font-bold mb-2 tabular-nums" style={{ color: '#0F48DC' }}>
+      <div className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-1 sm:mb-2 tabular-nums" style={{ color: '#0F48DC' }}>
         {metric.prefix ?? ''}
         {decimals > 0 ? count.toFixed(decimals) : Math.floor(count)}
         {metric.suffix ?? ''}
       </div>
-      <div className="text-sm font-medium text-gray-600">{metric.label}</div>
+      <div className="text-xs sm:text-sm font-medium text-gray-600 px-2">{metric.label}</div>
     </div>
   );
 }
@@ -79,9 +78,9 @@ const TrustRow = () => {
   }, []);
 
   return (
-    <section className="py-16 bg-white border-t border-b border-gray-100" ref={ref}>
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+    <section className="py-12 sm:py-16 bg-white border-t border-b border-gray-100" ref={ref}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {metrics.map((metric, index) => (
             <AnimatedMetric key={index} metric={metric} started={started} />
           ))}

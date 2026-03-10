@@ -230,6 +230,8 @@ const megaMenus: Record<string, MegaMenuConfig> = {
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileAccordion, setMobileAccordion] = useState<string | null>(null);
   const navRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -248,160 +250,312 @@ const Navigation = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
+
   const toggleDropdown = (item: string) => {
     setOpenDropdown(prev => (prev === item ? null : item));
   };
 
+  const toggleMobileAccordion = (item: string) => {
+    setMobileAccordion(prev => (prev === item ? null : item));
+  };
+
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+    setMobileAccordion(null);
+  };
+
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-lg shadow-sm' : 'bg-transparent'}`}>
-      <div className="max-w-7xl mx-auto px-6" ref={navRef}>
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 group flex-shrink-0">
-            <div className="w-10 h-10 rounded-lg flex items-center justify-center transform group-hover:scale-105 transition-transform" style={{ backgroundColor: '#0F48DC' }}>
-              <i className="ri-flashlight-fill text-white text-xl"></i>
-            </div>
-            <span className="text-xl font-bold text-gray-900">Tubelight</span>
-          </Link>
+    <>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-lg shadow-sm' : 'bg-transparent'}`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6" ref={navRef}>
+          <div className="flex items-center justify-between h-16 lg:h-20">
+            {/* Logo */}
+            <Link to="/" className="flex items-center space-x-2 group flex-shrink-0">
+              <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-lg flex items-center justify-center transform group-hover:scale-105 transition-transform" style={{ backgroundColor: '#0F48DC' }}>
+                <i className="ri-flashlight-fill text-white text-lg lg:text-xl"></i>
+              </div>
+              <span className="text-lg lg:text-xl font-bold text-gray-900">Tubelight</span>
+            </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-1">
-            {(['products', 'solutions', 'developers', 'resources', 'company'] as const).map((item) => (
-              <div key={item} className="relative">
-                <button
-                  onClick={() => toggleDropdown(item)}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all cursor-pointer flex items-center whitespace-nowrap ${
-                    isScrolled
-                      ? openDropdown === item ? 'text-[#0F48DC] bg-blue-50' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'
-                      : openDropdown === item ? 'text-[#0F48DC] bg-white/70' : 'text-gray-800 hover:text-gray-900 hover:bg-white/50'
-                  }`}
-                >
-                  {item.charAt(0).toUpperCase() + item.slice(1)}
-                  <i className={`ri-arrow-down-s-line ml-1 text-xs transition-transform duration-200 ${openDropdown === item ? 'rotate-180' : ''}`}></i>
-                </button>
-
-                {openDropdown === item && (
-                  <div
-                    className="absolute top-full mt-2 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden"
-                    style={{ left: '50%', transform: 'translateX(-50%)', minWidth: '680px' }}
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center space-x-1">
+              {(['products', 'solutions', 'developers', 'resources', 'company'] as const).map((item) => (
+                <div key={item} className="relative">
+                  <button
+                    onClick={() => toggleDropdown(item)}
+                    className={`px-3 xl:px-4 py-2 rounded-lg text-sm font-medium transition-all cursor-pointer flex items-center whitespace-nowrap ${
+                      isScrolled
+                        ? openDropdown === item ? 'text-[#0F48DC] bg-blue-50' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'
+                        : openDropdown === item ? 'text-[#0F48DC] bg-white/70' : 'text-gray-800 hover:text-gray-900 hover:bg-white/50'
+                    }`}
                   >
-                    {/* Top accent bar */}
-                    <div className="h-1 w-full" style={{ background: 'linear-gradient(90deg, #0F48DC, #4f8ef7)' }}></div>
+                    {item.charAt(0).toUpperCase() + item.slice(1)}
+                    <i className={`ri-arrow-down-s-line ml-1 text-xs transition-transform duration-200 ${openDropdown === item ? 'rotate-180' : ''}`}></i>
+                  </button>
 
-                    <div className="flex">
-                      {/* Columns */}
-                      <div className="flex-1 p-5 grid gap-x-6" style={{ gridTemplateColumns: `repeat(${megaMenus[item].columns.length}, 1fr)` }}>
-                        {megaMenus[item].columns.map((col, ci) => (
-                          <div key={ci}>
-                            <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3 px-1">{col.heading}</p>
-                            <div className="space-y-0.5">
-                              {col.items.map((subItem, idx) => (
-                                <a
-                                  key={idx}
-                                  href="#"
-                                  onClick={() => setOpenDropdown(null)}
-                                  className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-blue-50 transition-all group cursor-pointer"
-                                >
-                                  <div className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5 ${colorMap[subItem.name] || 'bg-gray-100 text-gray-500'}`}>
-                                    <i className={`${iconMap[subItem.name] || 'ri-apps-line'} text-sm`}></i>
-                                  </div>
-                                  <div className="flex-1 min-w-0">
-                                    <div className="flex items-center gap-2">
-                                      <span className="font-semibold text-gray-900 text-sm group-hover:text-[#0F48DC] transition-colors leading-tight">
-                                        {subItem.name}
-                                      </span>
-                                      {subItem.badge && (
-                                        <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full text-white whitespace-nowrap" style={{ backgroundColor: subItem.badge === 'New' ? '#10b981' : subItem.badge === 'Hiring' ? '#f59e0b' : '#0F48DC' }}>
-                                          {subItem.badge}
-                                        </span>
-                                      )}
+                  {openDropdown === item && (
+                    <div
+                      className="absolute top-full mt-2 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden"
+                      style={{ left: '50%', transform: 'translateX(-50%)', minWidth: '680px', maxWidth: '90vw' }}
+                    >
+                      {/* Top accent bar */}
+                      <div className="h-1 w-full" style={{ background: 'linear-gradient(90deg, #0F48DC, #4f8ef7)' }}></div>
+
+                      <div className="flex flex-col xl:flex-row">
+                        {/* Columns */}
+                        <div className="flex-1 p-5 grid gap-x-6" style={{ gridTemplateColumns: `repeat(${megaMenus[item].columns.length}, 1fr)` }}>
+                          {megaMenus[item].columns.map((col, ci) => (
+                            <div key={ci}>
+                              <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3 px-1">{col.heading}</p>
+                              <div className="space-y-0.5">
+                                {col.items.map((subItem, idx) => (
+                                  <a
+                                    key={idx}
+                                    href="#"
+                                    onClick={() => setOpenDropdown(null)}
+                                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-blue-50 transition-all group cursor-pointer"
+                                  >
+                                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5 ${colorMap[subItem.name] || 'bg-gray-100 text-gray-500'}`}>
+                                      <i className={`${iconMap[subItem.name] || 'ri-apps-line'} text-sm`}></i>
                                     </div>
-                                    <p className="text-xs text-gray-500 mt-0.5 leading-snug">{subItem.desc}</p>
-                                  </div>
-                                </a>
-                              ))}
+                                    <div className="flex-1 min-w-0">
+                                      <div className="flex items-center gap-2">
+                                        <span className="font-semibold text-gray-900 text-sm group-hover:text-[#0F48DC] transition-colors leading-tight">
+                                          {subItem.name}
+                                        </span>
+                                        {subItem.badge && (
+                                          <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full text-white whitespace-nowrap" style={{ backgroundColor: subItem.badge === 'New' ? '#10b981' : subItem.badge === 'Hiring' ? '#f59e0b' : '#0F48DC' }}>
+                                            {subItem.badge}
+                                          </span>
+                                        )}
+                                      </div>
+                                      <p className="text-xs text-gray-500 mt-0.5 leading-snug">{subItem.desc}</p>
+                                    </div>
+                                  </a>
+                                ))}
+                              </div>
                             </div>
+                          ))}
+                        </div>
+
+                        {/* Featured Panel */}
+                        {megaMenus[item].featured && (
+                          <div className="w-full xl:w-52 flex-shrink-0 p-5 border-t xl:border-t-0 xl:border-l border-gray-100" style={{ background: 'linear-gradient(135deg, #f0f5ff 0%, #e8f0fe 100%)' }}>
+                            <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style={{ backgroundColor: '#0F48DC' }}>
+                              <i className={`${megaMenus[item].featured!.icon} text-white text-lg`}></i>
+                            </div>
+                            <h4 className="font-bold text-gray-900 text-sm leading-snug mb-1.5">
+                              {megaMenus[item].featured!.title}
+                            </h4>
+                            <p className="text-xs text-gray-500 leading-relaxed mb-4">
+                              {megaMenus[item].featured!.desc}
+                            </p>
+                            <a
+                              href="#"
+                              onClick={() => setOpenDropdown(null)}
+                              className="inline-flex items-center text-xs font-bold transition-all hover:gap-2 gap-1 cursor-pointer"
+                              style={{ color: '#0F48DC' }}
+                            >
+                              {megaMenus[item].featured!.cta}
+                            </a>
                           </div>
-                        ))}
+                        )}
                       </div>
 
-                      {/* Featured Panel */}
-                      {megaMenus[item].featured && (
-                        <div className="w-52 flex-shrink-0 p-5 border-l border-gray-100" style={{ background: 'linear-gradient(135deg, #f0f5ff 0%, #e8f0fe 100%)' }}>
-                          <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style={{ backgroundColor: '#0F48DC' }}>
-                            <i className={`${megaMenus[item].featured!.icon} text-white text-lg`}></i>
-                          </div>
-                          <h4 className="font-bold text-gray-900 text-sm leading-snug mb-1.5">
-                            {megaMenus[item].featured!.title}
-                          </h4>
-                          <p className="text-xs text-gray-500 leading-relaxed mb-4">
-                            {megaMenus[item].featured!.desc}
-                          </p>
-                          <a
-                            href="#"
-                            onClick={() => setOpenDropdown(null)}
-                            className="inline-flex items-center text-xs font-bold transition-all hover:gap-2 gap-1"
-                            style={{ color: '#0F48DC' }}
-                          >
-                            {megaMenus[item].featured!.cta}
-                          </a>
-                        </div>
-                      )}
+                      {/* Bottom bar */}
+                      <div className="px-5 py-3 bg-gray-50 border-t border-gray-100 flex items-center justify-between">
+                        <span className="text-xs text-gray-400">Tubelight Communications</span>
+                        <a
+                          href="#"
+                          onClick={() => setOpenDropdown(null)}
+                          className="text-xs font-semibold flex items-center gap-1 hover:gap-2 transition-all cursor-pointer"
+                          style={{ color: '#0F48DC' }}
+                        >
+                          View all {item} <i className="ri-arrow-right-line"></i>
+                        </a>
+                      </div>
                     </div>
+                  )}
+                </div>
+              ))}
 
-                    {/* Bottom bar */}
-                    <div className="px-5 py-3 bg-gray-50 border-t border-gray-100 flex items-center justify-between">
-                      <span className="text-xs text-gray-400">Tubelight Communications</span>
-                      <a
-                        href="#"
-                        onClick={() => setOpenDropdown(null)}
-                        className="text-xs font-semibold flex items-center gap-1 hover:gap-2 transition-all"
-                        style={{ color: '#0F48DC' }}
-                      >
-                        View all {item} <i className="ri-arrow-right-line"></i>
-                      </a>
-                    </div>
+              <Link
+                to="/pricing"
+                className={`px-3 xl:px-4 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${isScrolled ? 'text-gray-700 hover:text-gray-900 hover:bg-gray-50' : 'text-gray-800 hover:text-gray-900 hover:bg-white/50'}`}
+              >
+                Pricing
+              </Link>
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="hidden lg:flex items-center space-x-3 flex-shrink-0">
+              <a
+                href="https://tubelightcommunications.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 xl:px-5 py-2.5 text-sm font-semibold text-gray-700 hover:text-gray-900 transition-colors whitespace-nowrap cursor-pointer"
+              >
+                Sign In
+              </a>
+              <a
+                href="https://tubelightcommunications.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-5 xl:px-6 py-2.5 text-white text-sm font-semibold rounded-lg hover:shadow-lg transform hover:scale-105 transition-all whitespace-nowrap cursor-pointer"
+                style={{ backgroundColor: '#0F48DC' }}
+              >
+                Try for Free
+              </a>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button 
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="lg:hidden p-2 text-gray-700 hover:text-gray-900 cursor-pointer"
+            >
+              <i className={`${mobileMenuOpen ? 'ri-close-line' : 'ri-menu-line'} text-2xl`}></i>
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile Menu Drawer */}
+      <div
+        className={`fixed inset-0 z-40 lg:hidden transition-opacity duration-300 ${
+          mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}
+      >
+        {/* Backdrop */}
+        <div
+          className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+          onClick={closeMobileMenu}
+        ></div>
+
+        {/* Drawer */}
+        <div
+          className={`absolute top-16 left-0 right-0 bottom-0 bg-white overflow-y-auto transition-transform duration-300 ${
+            mobileMenuOpen ? 'translate-y-0' : '-translate-y-full'
+          }`}
+        >
+          <div className="p-6 space-y-4">
+            {/* Accordion Menu Items */}
+            {(['products', 'solutions', 'developers', 'resources', 'company'] as const).map((item) => (
+              <div key={item} className="border-b border-gray-100 pb-4">
+                <button
+                  onClick={() => toggleMobileAccordion(item)}
+                  className="w-full flex items-center justify-between py-3 text-left cursor-pointer"
+                >
+                  <span className="text-base font-semibold text-gray-900 capitalize">{item}</span>
+                  <i className={`ri-arrow-down-s-line text-lg transition-transform duration-200 ${mobileAccordion === item ? 'rotate-180' : ''}`}></i>
+                </button>
+
+                {mobileAccordion === item && (
+                  <div className="mt-2 space-y-4 pl-2">
+                    {megaMenus[item].columns.map((col, ci) => (
+                      <div key={ci}>
+                        <p className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">{col.heading}</p>
+                        <div className="space-y-2">
+                          {col.items.map((subItem, idx) => (
+                            <a
+                              key={idx}
+                              href="#"
+                              onClick={closeMobileMenu}
+                              className="flex items-start gap-3 p-2 rounded-lg hover:bg-blue-50 transition-all cursor-pointer"
+                            >
+                              <div className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${colorMap[subItem.name] || 'bg-gray-100 text-gray-500'}`}>
+                                <i className={`${iconMap[subItem.name] || 'ri-apps-line'} text-sm`}></i>
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <div className="flex items-center gap-2">
+                                  <span className="font-semibold text-gray-900 text-sm leading-tight">
+                                    {subItem.name}
+                                  </span>
+                                  {subItem.badge && (
+                                    <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full text-white whitespace-nowrap" style={{ backgroundColor: subItem.badge === 'New' ? '#10b981' : subItem.badge === 'Hiring' ? '#f59e0b' : '#0F48DC' }}>
+                                      {subItem.badge}
+                                    </span>
+                                  )}
+                                </div>
+                                <p className="text-xs text-gray-500 mt-0.5 leading-snug">{subItem.desc}</p>
+                              </div>
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+
+                    {/* Featured in Mobile */}
+                    {megaMenus[item].featured && (
+                      <div className="mt-4 p-4 rounded-xl" style={{ background: 'linear-gradient(135deg, #f0f5ff 0%, #e8f0fe 100%)' }}>
+                        <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style={{ backgroundColor: '#0F48DC' }}>
+                          <i className={`${megaMenus[item].featured!.icon} text-white text-lg`}></i>
+                        </div>
+                        <h4 className="font-bold text-gray-900 text-sm leading-snug mb-1.5">
+                          {megaMenus[item].featured!.title}
+                        </h4>
+                        <p className="text-xs text-gray-500 leading-relaxed mb-3">
+                          {megaMenus[item].featured!.desc}
+                        </p>
+                        <a
+                          href="#"
+                          onClick={closeMobileMenu}
+                          className="inline-flex items-center text-xs font-bold gap-1 cursor-pointer"
+                          style={{ color: '#0F48DC' }}
+                        >
+                          {megaMenus[item].featured!.cta}
+                        </a>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
             ))}
 
+            {/* Pricing Link */}
             <Link
               to="/pricing"
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${isScrolled ? 'text-gray-700 hover:text-gray-900 hover:bg-gray-50' : 'text-gray-800 hover:text-gray-900 hover:bg-white/50'}`}
+              onClick={closeMobileMenu}
+              className="block py-3 text-base font-semibold text-gray-900"
             >
               Pricing
             </Link>
-          </div>
 
-          {/* CTA Buttons */}
-          <div className="hidden lg:flex items-center space-x-3 flex-shrink-0">
-            <a
-              href="https://tubelightcommunications.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-5 py-2.5 text-sm font-semibold text-gray-700 hover:text-gray-900 transition-colors whitespace-nowrap cursor-pointer"
-            >
-              Sign In
-            </a>
-            <a
-              href="https://tubelightcommunications.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-2.5 text-white text-sm font-semibold rounded-lg hover:shadow-lg transform hover:scale-105 transition-all whitespace-nowrap cursor-pointer"
-              style={{ backgroundColor: '#0F48DC' }}
-            >
-              Try for Free
-            </a>
+            {/* CTA Buttons in Mobile */}
+            <div className="pt-4 space-y-3 border-t border-gray-100">
+              <a
+                href="https://tubelightcommunications.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={closeMobileMenu}
+                className="block w-full px-6 py-3 text-center text-sm font-semibold text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors cursor-pointer"
+              >
+                Sign In
+              </a>
+              <a
+                href="https://tubelightcommunications.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={closeMobileMenu}
+                className="block w-full px-6 py-3 text-center text-white text-sm font-semibold rounded-lg hover:shadow-lg transition-all cursor-pointer"
+                style={{ backgroundColor: '#0F48DC' }}
+              >
+                Try for Free
+              </a>
+            </div>
           </div>
-
-          {/* Mobile Menu Button */}
-          <button className="lg:hidden p-2 text-gray-700 hover:text-gray-900 cursor-pointer">
-            <i className="ri-menu-line text-2xl"></i>
-          </button>
         </div>
       </div>
-    </nav>
+    </>
   );
 };
 

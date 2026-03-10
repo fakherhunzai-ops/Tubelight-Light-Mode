@@ -1,4 +1,3 @@
-
 export default function UseCases() {
   const cases = [
     {
@@ -28,44 +27,44 @@ export default function UseCases() {
   ];
 
   return (
-    <section className="py-32 bg-gradient-to-br from-gray-50 to-white">
-      <div className="max-w-[1440px] mx-auto px-8">
-        <div className="text-center mb-16 space-y-4">
-          <h2 className="font-['Plus_Jakarta_Sans'] text-5xl font-bold text-gray-900">
+    <section className="py-16 md:py-24 lg:py-32 bg-gradient-to-br from-gray-50 to-white">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8">
+        <div className="text-center mb-12 md:mb-16 space-y-3 md:space-y-4">
+          <h2 className="font-['Plus_Jakarta_Sans'] text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900">
             Engage &amp; Manage
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto font-['Inter']">
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto font-['Inter']">
             Tubelight Communications integrates with leading 3rd party Softwares, e-commerce platforms, CRMs, and marketing tools. Its AI powered omni channel communication platform supports brands to engage &amp; manage their customers conversations to enhance their customer experiences.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {cases.map((useCase, index) => (
             <div
               key={index}
-              className="group bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+              className="group bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer"
             >
-              <div className="space-y-6">
-                <div className="w-20 h-20 flex items-center justify-center rounded-2xl" style={{backgroundColor: '#0F48DC'}}>
-                  <i className={`${useCase.icon} text-4xl text-white`}></i>
+              <div className="space-y-5 md:space-y-6">
+                <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center rounded-2xl" style={{backgroundColor: '#0F48DC'}}>
+                  <i className={`${useCase.icon} text-3xl md:text-4xl text-white`}></i>
                 </div>
 
-                <div className="space-y-3">
-                  <h3 className="font-['Plus_Jakarta_Sans'] text-2xl font-bold text-gray-900">
+                <div className="space-y-2 md:space-y-3">
+                  <h3 className="font-['Plus_Jakarta_Sans'] text-xl md:text-2xl font-bold text-gray-900">
                     {useCase.title}
                   </h3>
-                  <p className="text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
                     {useCase.description}
                   </p>
                 </div>
 
                 <a
                   href={useCase.link}
-                  className="inline-flex items-center gap-2 text-[15px] font-semibold group-hover:gap-3 transition-all"
+                  className="inline-flex items-center gap-2 text-sm md:text-[15px] font-semibold group-hover:gap-3 transition-all"
                   style={{color: '#0F48DC'}}
                 >
                   Learn more
-                  <i className="ri-arrow-right-line text-lg"></i>
+                  <i className="ri-arrow-right-line text-base md:text-lg"></i>
                 </a>
               </div>
             </div>

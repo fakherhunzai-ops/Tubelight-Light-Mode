@@ -1,166 +1,141 @@
 import { useState } from 'react';
 
+const channels = [
+  {
+    id: 'sms',
+    name: 'SMS',
+    icon: 'ri-message-3-line',
+    color: 'bg-blue-500',
+    title: 'SMS API',
+    description: 'Send transactional and promotional SMS at scale with our reliable SMS gateway. Reach customers instantly with high delivery rates and real-time tracking.',
+    features: ['99.9% Delivery Rate', 'Global Coverage', 'Two-way Messaging', 'Unicode Support'],
+    image: 'https://readdy.ai/api/search-image?query=Modern%20SMS%20messaging%20dashboard%20interface%20showing%20message%20analytics%20with%20delivery%20statistics%20real-time%20metrics%20and%20conversation%20threads%20on%20clean%20white%20background%20with%20blue%20accent%20colors%20professional%20business%20software%20UI%20design&width=600&height=400&seq=sms-dash-001&orientation=landscape'
+  },
+  {
+    id: 'whatsapp',
+    name: 'WhatsApp',
+    icon: 'ri-whatsapp-line',
+    color: 'bg-green-500',
+    title: 'WhatsApp Business API',
+    description: 'Connect with customers on their favorite messaging platform. Send notifications, provide support, and build relationships through WhatsApp Business API.',
+    features: ['Rich Media Support', 'Template Messages', 'Interactive Buttons', 'Verified Business Profile'],
+    image: 'https://readdy.ai/api/search-image?query=WhatsApp%20Business%20API%20dashboard%20showing%20chat%20conversations%20with%20customers%20message%20templates%20and%20analytics%20panels%20on%20clean%20interface%20with%20green%20accent%20colors%20modern%20business%20communication%20platform%20UI&width=600&height=400&seq=wa-dash-001&orientation=landscape'
+  },
+  {
+    id: 'voice',
+    name: 'Voice',
+    icon: 'ri-phone-line',
+    color: 'bg-purple-500',
+    title: 'Voice API',
+    description: 'Build powerful voice experiences with our programmable voice API. Make and receive calls, create IVR systems, and enable voice-based authentication.',
+    features: ['HD Voice Quality', 'IVR Builder', 'Call Recording', 'Number Masking'],
+    image: 'https://readdy.ai/api/search-image?query=Voice%20call%20analytics%20dashboard%20showing%20active%20calls%20call%20duration%20statistics%20and%20IVR%20flow%20diagram%20on%20modern%20interface%20with%20purple%20accent%20colors%20telecommunication%20software%20UI%20design&width=600&height=400&seq=voice-dash-001&orientation=landscape'
+  },
+  {
+    id: 'ai',
+    name: 'Conversational AI',
+    icon: 'ri-robot-line',
+    color: 'bg-indigo-500',
+    title: 'Conversational AI',
+    description: 'Deploy intelligent chatbots and virtual assistants powered by advanced NLP. Automate customer interactions while maintaining natural, human-like conversations.',
+    features: ['Natural Language Processing', 'Multi-language Support', 'Intent Recognition', 'Sentiment Analysis'],
+    image: 'https://readdy.ai/api/search-image?query=AI%20chatbot%20dashboard%20interface%20showing%20conversation%20flows%20with%20natural%20language%20processing%20analytics%20intent%20recognition%20graphs%20and%20bot%20performance%20metrics%20on%20modern%20UI%20with%20indigo%20accent%20colors&width=600&height=400&seq=ai-dash-001&orientation=landscape'
+  },
+  {
+    id: 'rcs',
+    name: 'RCS',
+    icon: 'ri-chat-4-line',
+    color: 'bg-teal-500',
+    title: 'RCS Messaging',
+    description: 'Next-generation messaging with rich media, interactive buttons, and verified sender identity. Deliver app-like experiences directly in the native messaging app.',
+    features: ['Rich Media Cards', 'Suggested Actions', 'Verified Sender', 'Read Receipts'],
+    image: 'https://readdy.ai/api/search-image?query=RCS%20messaging%20platform%20dashboard%20showing%20rich%20media%20message%20cards%20with%20interactive%20buttons%20carousel%20layouts%20and%20engagement%20analytics%20on%20clean%20interface%20with%20teal%20accent%20colors%20modern%20messaging%20UI&width=600&height=400&seq=rcs-dash-001&orientation=landscape'
+  }
+];
+
 export default function ProductShowcase() {
   const [activeTab, setActiveTab] = useState('sms');
-
-  const products = {
-    sms: {
-      icon: 'ri-message-3-line',
-      title: 'SMS',
-      description: 'Get your SMS workflow with a customer letter by Tubelight, powered by a global super-network of direct connections. Reach customers instantly with reliable, high-throughput SMS delivery across 190+ countries.',
-      features: [
-        'Global SMS delivery to 190+ countries',
-        'Two-way messaging with DLT compliance',
-        'Smart routing for optimal delivery',
-        'Unicode support for multilingual messages',
-        'Real-time delivery reports & analytics',
-        '10,000 SMS per second throughput'
-      ],
-      image: 'https://readdy.ai/api/search-image?query=A%20modern%20SaaS%20dashboard%20UI%20screenshot%20showing%20SMS%20campaign%20management%20interface%20with%20message%20composer%20panel%20on%20the%20left%20showing%20a%20text%20message%20preview%20on%20a%20smartphone%20mockup%20on%20the%20right%20side%20delivery%20rate%20percentage%20charts%20green%20tick%20delivery%20status%20rows%20contact%20list%20table%20with%20phone%20numbers%20clean%20white%20background%20blue%20accent%20colors%20professional%20enterprise%20software%20design&width=700&height=500&seq=sms-product-ui-tbl-v3&orientation=landscape'
-    },
-    whatsapp: {
-      icon: 'ri-whatsapp-line',
-      title: 'WhatsApp',
-      description: 'Scale the reach of your business using the network of 2 billion active users on the world\'s most popular messenger app in 190 countries. Send rich media, interactive buttons, and automated conversations via the official WhatsApp Business API.',
-      features: [
-        'Official WhatsApp Business Solution Provider',
-        'Rich media: images, videos, documents',
-        'Interactive buttons & quick replies',
-        'Template message approval & management',
-        'End-to-end encrypted conversations',
-        '2 billion+ reachable users globally'
-      ],
-      image: 'https://readdy.ai/api/search-image?query=A%20polished%20SaaS%20product%20UI%20screenshot%20showing%20WhatsApp%20Business%20API%20messaging%20dashboard%20with%20a%20chat%20conversation%20panel%20displaying%20rich%20media%20message%20bubbles%20with%20image%20thumbnails%20quick%20reply%20buttons%20and%20call%20to%20action%20buttons%20on%20a%20smartphone%20frame%20on%20the%20right%20analytics%20panel%20showing%20open%20rate%20delivered%20rate%20on%20the%20left%20clean%20white%20background%20green%20WhatsApp%20accent%20colors%20enterprise%20software&width=700&height=500&seq=whatsapp-product-ui-tbl-v3&orientation=landscape'
-    },
-    voice: {
-      icon: 'ri-phone-line',
-      title: 'Voice',
-      description: 'Engage with your customer better by simplifying your business process communication using our cloud telephony platform. Enable IVR, call recording, voice broadcasting, and real-time call management at scale.',
-      features: [
-        'Cloud-based contact center suite',
-        'IVR with multi-level flow builder',
-        'Call recording & transcription',
-        'Voice broadcasting campaigns',
-        'Real-time call analytics & monitoring',
-        '5,000 calls per second capacity'
-      ],
-      image: 'https://readdy.ai/api/search-image?query=A%20professional%20SaaS%20dashboard%20UI%20screenshot%20showing%20cloud%20telephony%20voice%20call%20management%20interface%20with%20IVR%20flow%20diagram%20builder%20showing%20connected%20nodes%20and%20decision%20trees%20on%20the%20left%20a%20live%20call%20monitoring%20panel%20showing%20active%20calls%20queue%20status%20agent%20availability%20status%20bars%20real-time%20call%20duration%20counters%20clean%20white%20background%20blue%20accent%20colors%20enterprise%20contact%20center%20software%20design&width=700&height=500&seq=voice-product-ui-tbl-v3&orientation=landscape'
-    },
-    ai: {
-      icon: 'ri-robot-line',
-      title: 'Conversational AI',
-      description: 'Enhance your customers conversation by automating the workflow. Automated Chat and Voice bots help boost engagement (CSAT), solve issue in real time. Build intelligent, context-aware conversations across all channels.',
-      features: [
-        'AI-powered chatbot & voicebot builder',
-        'Natural language understanding (NLU)',
-        'Omnichannel bot deployment',
-        'Live agent handoff & escalation',
-        'CSAT improvement & real-time resolution',
-        'Pre-built templates for common use cases'
-      ],
-      image: 'https://readdy.ai/api/search-image?query=A%20sleek%20SaaS%20product%20UI%20screenshot%20showing%20conversational%20AI%20chatbot%20builder%20interface%20with%20a%20visual%20drag%20and%20drop%20flow%20canvas%20showing%20bot%20conversation%20nodes%20connected%20by%20arrows%20on%20the%20left%20a%20live%20chat%20preview%20panel%20on%20the%20right%20showing%20AI%20bot%20responses%20with%20typing%20indicator%20user%20messages%20and%20bot%20replies%20CSAT%20score%20widget%20satisfaction%20percentage%20donut%20chart%20clean%20white%20background%20blue%20purple%20accent%20colors%20modern%20enterprise%20AI%20software&width=700&height=500&seq=ai-product-ui-tbl-v3&orientation=landscape'
-    },
-    rcs: {
-      icon: 'ri-chat-smile-3-line',
-      title: 'RCS Messaging',
-      description: 'New Rich channel for brands giving the look to regular SMS, giving the back to regular SMS. Stand out with branded conversations right in customer SMS inboxes. Deliver rich cards, carousels, and suggested actions natively.',
-      features: [
-        'Branded sender with logo & verified badge',
-        'Rich cards, carousels & suggested replies',
-        'Read receipts & delivery confirmation',
-        'Native Android messaging experience',
-        'Fallback to SMS for unsupported devices',
-        'Interactive buttons & quick actions'
-      ],
-      image: 'https://readdy.ai/api/search-image?query=A%20modern%20SaaS%20dashboard%20UI%20screenshot%20showing%20RCS%20Rich%20Communication%20Services%20messaging%20campaign%20interface%20with%20a%20smartphone%20mockup%20on%20the%20right%20displaying%20a%20branded%20RCS%20message%20with%20a%20company%20logo%20verified%20checkmark%20badge%20a%20rich%20card%20with%20product%20image%20carousel%20interactive%20action%20buttons%20suggested%20replies%20on%20the%20left%20a%20campaign%20analytics%20panel%20showing%20impressions%20clicks%20conversion%20rate%20clean%20white%20background%20blue%20accent%20colors%20enterprise%20messaging%20platform%20design&width=700&height=500&seq=rcs-product-ui-tbl-v3&orientation=landscape'
-    }
-  };
-
-  const tabs = [
-    { id: 'sms', label: 'SMS' },
-    { id: 'whatsapp', label: 'WhatsApp' },
-    { id: 'voice', label: 'Voice' },
-    { id: 'ai', label: 'Conversational AI' },
-    { id: 'rcs', label: 'RCS Messaging' },
-  ];
-
-  const activeProduct = products[activeTab as keyof typeof products];
+  const activeChannel = channels.find(c => c.id === activeTab) || channels[0];
 
   return (
-    <section className="py-32 bg-white">
-      <div className="max-w-[1440px] mx-auto px-8">
-        <div className="text-center mb-16 space-y-4">
-          <h2 className="font-['Plus_Jakarta_Sans'] text-5xl font-bold">
-            Every conversation is an opportunity.{' '}
-            <span style={{color: '#0F48DC'}}>Connect with your customers</span>
-            <br />on channel of their choice
+    <section className="py-12 md:py-16 lg:py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-8 md:mb-12 lg:mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 md:mb-4">
+            Omnichannel Communication Platform
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto font-['Inter']">
-            Reach out. Engage. Enhance across Channels! Tubelight's powerful CPaaS platform brings all your communication channels under one roof.
+          <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto px-4">
+            Connect with your customers on their preferred channels. One API, multiple channels, infinite possibilities.
           </p>
         </div>
 
-        {/* Tab Navigation */}
-        <div className="flex items-center justify-center gap-3 mb-12 flex-wrap">
-          {tabs.map((tab) => (
+        {/* Tab Navigation - Responsive */}
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 md:mb-12 px-2">
+          {channels.map((channel) => (
             <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`px-8 py-3.5 rounded-full text-[15px] font-semibold transition-all whitespace-nowrap ${
-                activeTab === tab.id
-                  ? 'text-white shadow-lg scale-105'
+              key={channel.id}
+              onClick={() => setActiveTab(channel.id)}
+              className={`flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-full font-medium transition-all whitespace-nowrap ${
+                activeTab === channel.id
+                  ? 'bg-gray-900 text-white shadow-lg scale-105'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
-              style={activeTab === tab.id ? { backgroundColor: '#0F48DC' } : {}}
             >
-              {tab.label}
+              <i className={`${channel.icon} text-lg sm:text-xl`}></i>
+              <span className="text-sm sm:text-base">{channel.name}</span>
             </button>
           ))}
         </div>
 
-        {/* Content Panel */}
-        <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
-          <div className="grid grid-cols-2 gap-0">
-            {/* Left Content */}
-            <div className="p-12 space-y-8">
-              <div className="w-14 h-14 flex items-center justify-center rounded-2xl shadow-lg" style={{backgroundColor: '#0F48DC'}}>
-                <i className={`${activeProduct.icon} text-3xl text-white`}></i>
+        {/* Content Panel - Responsive Grid */}
+        <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 shadow-xl border border-gray-100">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* Left Content - Stacks on top on mobile */}
+            <div className="order-1">
+              <div className={`inline-flex items-center gap-2 ${activeChannel.color} text-white px-4 py-2 rounded-full mb-4 sm:mb-6`}>
+                <i className={`${activeChannel.icon} text-lg sm:text-xl`}></i>
+                <span className="font-semibold text-sm sm:text-base">{activeChannel.name}</span>
               </div>
+              
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
+                {activeChannel.title}
+              </h3>
+              
+              <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8 leading-relaxed">
+                {activeChannel.description}
+              </p>
 
-              <div className="space-y-4">
-                <h3 className="font-['Plus_Jakarta_Sans'] text-3xl font-bold text-gray-900">
-                  {activeProduct.title}
-                </h3>
-                <p className="text-base text-gray-600 leading-relaxed">
-                  {activeProduct.description}
-                </p>
-              </div>
-
-              <div className="space-y-3">
-                {activeProduct.features.map((feature, index) => (
-                  <div key={index} className="flex items-center gap-3">
-                    <div className="w-5 h-5 flex items-center justify-center rounded-full flex-shrink-0" style={{backgroundColor: '#0F48DC'}}>
-                      <i className="ri-check-line text-white text-sm"></i>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-6 sm:mb-8">
+                {activeChannel.features.map((feature, index) => (
+                  <div key={index} className="flex items-center gap-2 sm:gap-3">
+                    <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                      <i className="ri-check-line text-green-600 text-sm sm:text-base"></i>
                     </div>
-                    <span className="text-[15px] text-gray-700">{feature}</span>
+                    <span className="text-sm sm:text-base text-gray-700">{feature}</span>
                   </div>
                 ))}
               </div>
 
-              <a href="#" className="inline-flex items-center gap-2 text-[15px] font-semibold group" style={{color: '#0F48DC'}}>
-                Explore {activeProduct.title}
-                <i className="ri-arrow-right-line text-lg group-hover:translate-x-1 transition-transform"></i>
-              </a>
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <button className="px-6 sm:px-8 py-3 sm:py-3.5 bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl whitespace-nowrap text-sm sm:text-base">
+                  Get Started
+                </button>
+                <button className="px-6 sm:px-8 py-3 sm:py-3.5 bg-white text-gray-900 rounded-full font-semibold hover:bg-gray-50 transition-colors border-2 border-gray-200 whitespace-nowrap text-sm sm:text-base">
+                  View Documentation
+                </button>
+              </div>
             </div>
 
-            {/* Right Visual */}
-            <div className="relative p-8 flex items-center justify-center" style={{backgroundColor: 'rgba(15,72,220,0.04)'}}>
-              <div className="w-full h-full">
-                <img
-                  src={activeProduct.image}
-                  alt={activeProduct.title}
-                  className="w-full h-full object-cover rounded-xl shadow-lg"
-                />
+            {/* Right Image - Stacks below on mobile */}
+            <div className="order-2">
+              <div className="relative rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl border border-gray-200 bg-white">
+                <div className="w-full h-64 sm:h-80 lg:h-96">
+                  <img
+                    src={activeChannel.image}
+                    alt={`${activeChannel.name} Dashboard`}
+                    className="w-full h-full object-cover object-top"
+                  />
+                </div>
               </div>
             </div>
           </div>

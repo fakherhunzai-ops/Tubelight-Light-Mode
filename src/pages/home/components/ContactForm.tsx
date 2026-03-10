@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 
 const services = ['SMS API', 'WhatsApp Business API', 'Voice API', 'OTP & 2FA', 'Email API', 'RCS Messaging', 'Other'];
@@ -49,27 +48,27 @@ export default function ContactForm() {
   };
 
   return (
-    <section className="py-24 bg-[#F7F9FF]" id="contact">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-12 md:py-16 lg:py-24 bg-[#F7F9FF]" id="contact">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8 md:mb-12 lg:mb-16">
           <span
-            className="inline-block text-sm font-semibold px-4 py-1.5 rounded-full mb-4"
+            className="inline-block text-xs sm:text-sm font-semibold px-3 sm:px-4 py-1 sm:py-1.5 rounded-full mb-3 sm:mb-4"
             style={{ backgroundColor: '#0F48DC18', color: '#0F48DC' }}
           >
             Contact Us
           </span>
-          <h2 className="font-['Plus_Jakarta_Sans'] text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="font-['Plus_Jakarta_Sans'] text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 px-4">
             Get in <span style={{ color: '#0F48DC' }}>Touch</span>
           </h2>
-          <p className="text-lg text-gray-500 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-gray-500 max-w-2xl mx-auto px-4">
             Have questions about our platform? Our team is ready to help you find the right communication solution for your business.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-12 items-start">
+        <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-start">
           {/* Left info panel */}
-          <div className="lg:col-span-2 space-y-8">
+          <div className="lg:col-span-2 space-y-4 sm:space-y-6 lg:space-y-8">
             {/* Contact cards */}
             {[
               {
@@ -93,24 +92,24 @@ export default function ContactForm() {
             ].map((item, i) => (
               <div
                 key={i}
-                className="flex items-start gap-4 p-5 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
+                className="flex items-start gap-3 sm:gap-4 p-4 sm:p-5 bg-white rounded-xl sm:rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
               >
                 <div
-                  className="w-12 h-12 flex items-center justify-center rounded-xl shrink-0"
+                  className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-lg sm:rounded-xl shrink-0"
                   style={{ backgroundColor: '#0F48DC15' }}
                 >
-                  <i className={`${item.icon} text-xl`} style={{ color: '#0F48DC' }}></i>
+                  <i className={`${item.icon} text-lg sm:text-xl`} style={{ color: '#0F48DC' }}></i>
                 </div>
                 <div>
                   <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-0.5">{item.title}</p>
-                  <p className="font-semibold text-gray-800 text-sm">{item.detail}</p>
+                  <p className="font-semibold text-gray-800 text-sm break-words">{item.detail}</p>
                   <p className="text-xs text-gray-400 mt-0.5">{item.sub}</p>
                 </div>
               </div>
             ))}
 
             {/* Social links */}
-            <div className="p-5 bg-white rounded-2xl shadow-sm border border-gray-100">
+            <div className="p-4 sm:p-5 bg-white rounded-xl sm:rounded-2xl shadow-sm border border-gray-100">
               <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Follow Us</p>
               <div className="flex gap-3">
                 {[
@@ -144,22 +143,22 @@ export default function ContactForm() {
           </div>
 
           {/* Right form */}
-          <div className="lg:col-span-3 bg-white rounded-3xl shadow-lg border border-gray-100 p-8 lg:p-10">
+          <div className="lg:col-span-3 bg-white rounded-2xl sm:rounded-3xl shadow-lg border border-gray-100 p-6 sm:p-8 lg:p-10">
             {submitted ? (
-              <div className="flex flex-col items-center justify-center py-16 text-center gap-4">
+              <div className="flex flex-col items-center justify-center py-12 sm:py-16 text-center gap-3 sm:gap-4">
                 <div
-                  className="w-20 h-20 rounded-full flex items-center justify-center mb-2"
+                  className="w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center mb-2"
                   style={{ backgroundColor: '#0F48DC15' }}
                 >
-                  <i className="ri-checkbox-circle-line text-4xl" style={{ color: '#0F48DC' }}></i>
+                  <i className="ri-checkbox-circle-line text-3xl sm:text-4xl" style={{ color: '#0F48DC' }}></i>
                 </div>
-                <h3 className="font-['Plus_Jakarta_Sans'] text-2xl font-bold text-gray-900">Message Sent!</h3>
-                <p className="text-gray-500 max-w-sm">
+                <h3 className="font-['Plus_Jakarta_Sans'] text-xl sm:text-2xl font-bold text-gray-900">Message Sent!</h3>
+                <p className="text-sm sm:text-base text-gray-500 max-w-sm px-4">
                   Thanks for reaching out. Our team will get back to you within 24 hours.
                 </p>
                 <button
                   onClick={() => setSubmitted(false)}
-                  className="mt-4 px-6 py-2.5 rounded-xl text-sm font-semibold text-white transition-opacity hover:opacity-90 cursor-pointer whitespace-nowrap"
+                  className="mt-4 px-5 sm:px-6 py-2 sm:py-2.5 rounded-xl text-sm font-semibold text-white transition-opacity hover:opacity-90 cursor-pointer whitespace-nowrap"
                   style={{ backgroundColor: '#0F48DC' }}
                 >
                   Send Another Message
@@ -170,9 +169,9 @@ export default function ContactForm() {
                 data-readdy-form
                 id="contact-form"
                 onSubmit={handleSubmit}
-                className="space-y-5"
+                className="space-y-4 sm:space-y-5"
               >
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1.5">First Name <span className="text-red-400">*</span></label>
                     <input
@@ -213,7 +212,7 @@ export default function ContactForm() {
                   />
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1.5">Company</label>
                     <input
