@@ -280,9 +280,8 @@ const Navigation = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6" ref={navRef}>
           <div className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
-            <Link to="/" className="flex items-center space-x-2 group flex-shrink-0">
-              <img src="/logo.png" alt="Tubelight Communications" className="h-8 w-auto transform group-hover:scale-105 transition-transform" />
-              <span className="text-lg lg:text-xl font-bold text-gray-900">Tubelight</span>
+            <Link to="/" className="flex items-center group flex-shrink-0">
+              <img src="/logo.png" alt="Tubelight Communications" className="h-12 lg:h-14 w-auto transform group-hover:scale-110 transition-transform" />
             </Link>
 
             {/* Desktop Navigation */}
