@@ -33,7 +33,7 @@ export default function Footer() {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-start rounded-lg bg-gray-800 text-gray-400 hover:text-white transition-all cursor-pointer"
+                  className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-lg bg-gray-800 text-gray-400 hover:text-white transition-all cursor-pointer"
                   onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#0F48DC')}
                   onMouseLeave={e => (e.currentTarget.style.backgroundColor = '')}
                 >
