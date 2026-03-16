@@ -19,13 +19,10 @@ export default function Footer() {
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 sm:gap-10 lg:gap-12 mb-12 sm:mb-14 lg:mb-16">
           {/* Brand Column */}
-          <div className="col-span-2 md:col-span-3 lg:col-span-1 space-y-4 sm:space-y-6">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg flex items-center justify-center" style={{backgroundColor: '#0F48DC'}}>
-                <i className="ri-flashlight-fill text-white text-base sm:text-lg"></i>
-              </div>
-              <span className="text-base sm:text-lg font-bold text-white">Tubelight</span>
-            </div>
+          <div className="col-span-2 md:col-span-3 lg:col-span-1 space-y-4 sm:space-y-6 flex flex-col items-center">
+            <Link to="/" className="inline-flex items-center justify-center">
+              <img src="../../out/assets/footer_logo.png" alt="Tubelight Communications" className="h-16 w-auto filter brightness-0 invert" />
+            </Link>
             <p className="text-xs sm:text-sm text-gray-400 leading-relaxed max-w-xs">
               A CPaaS company that empowers brands through its Omnichannel communication platform to engage customers via the channel of their choice.
             </p>
@@ -36,7 +33,7 @@ export default function Footer() {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-lg bg-gray-800 text-gray-400 hover:text-white transition-all cursor-pointer"
+                  className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-start rounded-lg bg-gray-800 text-gray-400 hover:text-white transition-all cursor-pointer"
                   onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#0F48DC')}
                   onMouseLeave={e => (e.currentTarget.style.backgroundColor = '')}
                 >

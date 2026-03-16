@@ -278,10 +278,10 @@ const Navigation = () => {
     <>
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-lg shadow-sm' : 'bg-transparent'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6" ref={navRef}>
-          <div className="flex items-center justify-between h-16 lg:h-20">
+          <div className="flex items-center justify-between h-24">
             {/* Logo */}
-            <Link to="/" className="flex items-center group flex-shrink-0">
-              <img src="/logo.png" alt="Tubelight Communications" className="h-12 lg:h-14 w-auto transform group-hover:scale-110 transition-transform" />
+            <Link to="/" className="flex items-center group flex-shrink-0 mt-4">
+              <img src="/logo.png" alt="Tubelight Communications" className="h-32 w-auto transform group-hover:scale-110 transition-transform" />
             </Link>
 
             {/* Desktop Navigation */}
