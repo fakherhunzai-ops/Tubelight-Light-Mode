@@ -281,9 +281,7 @@ const Navigation = () => {
           <div className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-2 group flex-shrink-0">
-              <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-lg flex items-center justify-center transform group-hover:scale-105 transition-transform" style={{ backgroundColor: '#0F48DC' }}>
-                <i className="ri-flashlight-fill text-white text-lg lg:text-xl"></i>
-              </div>
+              <img src="/logo.png" alt="Tubelight Communications" className="h-8 w-auto transform group-hover:scale-105 transition-transform" />
               <span className="text-lg lg:text-xl font-bold text-gray-900">Tubelight</span>
             </Link>
 
