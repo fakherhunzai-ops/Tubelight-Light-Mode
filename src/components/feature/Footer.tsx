@@ -21,7 +21,7 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="col-span-2 md:col-span-3 lg:col-span-1 space-y-4 sm:space-y-6 flex flex-col items-center">
             <Link to="/" className="inline-flex items-center justify-center">
-              <img src="../../out/assets/footer_logo.png" alt="Tubelight Communications" className="h-16 w-auto filter brightness-0 invert" />
+              <img src="../../public/footer_logo.png" alt="Tubelight Communications" className="h-16 w-auto filter brightness-0 invert" />
             </Link>
             <p className="text-xs sm:text-sm text-gray-400 leading-relaxed max-w-xs">
               A CPaaS company that empowers brands through its Omnichannel communication platform to engage customers via the channel of their choice.
