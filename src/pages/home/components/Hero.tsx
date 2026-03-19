@@ -31,7 +31,7 @@ const Hero = () => {
 
             {/* Subtext */}
             <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-2xl leading-relaxed">
-              Tubelight is a CPaaS company that empowers brands, through its Omnichannel communication platform, to engage their customers via the channel of their choice. Empowering Brands for a Superlative Customer experience.
+              Tubelight is a CPaaS company that empowers brands, through its Omni channel communication platform, to engage their customers via the channel of their choice. Empowering Brands for a Superlative Customer experience.
             </p>
 
             {/* CTA Buttons */}
